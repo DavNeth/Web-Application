@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Water Spring Locator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=8.3175&lon=124.8775&zoom=10" 
+    async defer></script>
+</head>
+<body>
+    <header>
+        <h1>Water Spring Locator</h1>
+        <p>Find nearby water springs in your area.</p>
+    </header>
+
+    <main>
+        <section class="search">
+            <input type="text" id="searchInput" placeholder="Enter a location">
+            <button onclick="locateSpring()">Search</button>
+        </section>
+        <section id="map"></section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Water Spring Locator. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
