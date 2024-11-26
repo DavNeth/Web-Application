@@ -1,49 +1,33 @@
-let map;
-let geocoder;
-let marker;
+class LeafletMap {
 
-function initMap() {
-    // Initial map centered at Manolo Fortich, Bukidnon (Philippines)
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 8.3462, lng: 124.9092 },  // Coordinates for Manolo Fortich
-        zoom: 12,  // Zoom level for a more focused view
-    });
-    geocoder = new google.maps.Geocoder();
-}
-
-function locateSpring() {
-    const location = document.getElementById("searchInput").value;
-    
-    if (location === "") {
-        alert("Please enter a location.");
-        return;
+    constructor(containerId, center, zoom) {
+        this.map = L.map(containerId).setView(center, zoom);
+        this.initTileLayer();
+    }
+    initTileLayer() {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(this.map);
     }
 
-    geocodeLocation(location);
+    addMarker(lat, lng, message) {
+        const marker = L.marker([lat, lng]).addTo(this.map);
+        marker.bindPopup(message);
+    }
+
+    loadMarkersFromJson(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(marker => {
+                    this.addMarker(marker.latitude, marker.longitude, marker.message);
+                });
+            })
+            .catch(error => console.error('Error loading markers:', error));
+    }
 }
 
-function geocodeLocation(address) {
-    geocoder.geocode({ address: address }, function (results, status) {
-        if (status === "OK") {
-            // Center map on the found location
-            map.setCenter(results[0].geometry.location);
-            map.setZoom(12);
+const myMap = new LeafletMap('map', [8.360004, 124.868419], 14);
 
-            // Place a marker on the map
-            if (marker) {
-                marker.setMap(null);
-            }
-
-            marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location,
-                title: "Water Spring Location",
-            });
-
-            // You can add more logic here to show nearby water springs
-            alert("Location found! Water springs near here can be displayed.");
-        } else {
-            alert("Geocode was not successful for the following reason: " + status);
-        }
-    });
-}
+myMap.loadMarkersFromJson('map.json');

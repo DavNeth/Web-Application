@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=8.3175&lon=124.8775&zoom=10" 
     async defer></script>
+    <script>
+        function locateSpring() {
+            const searchQuery = document.getElementById("searchInput").value.trim();
+            
+            if (searchQuery) {
+                // Redirect to map.html
+                window.location.href = "map.html";
+            } else {
+                // Handle empty input
+                alert("Please enter or select a location.");
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -17,7 +30,10 @@
 
     <main>
         <section class="search">
-            <input type="text" id="searchInput" placeholder="Enter a location">
+            <input list="locations" id="searchInput" placeholder="Enter a location">
+            <datalist id="locations">
+                <option value="Tankulan Manolo Fortich Bukidnon"></option>
+            </datalist>
             <button onclick="locateSpring()">Search</button>
         </section>
         <section id="map"></section>
