@@ -29,14 +29,10 @@
         .spring-info {
             position: fixed;
             top: -100%;
-            /* Initially off-screen */
             left: 50%;
             transform: translateX(-50%);
-            /* Center horizontally */
             width: 85%;
-            /* Increased width to 85% */
             max-width: 600px;
-            /* Increased max-width to 600px */
             background-color: rgba(255, 255, 255, 0.9);
             text-align: center;
             padding: 20px;
@@ -47,9 +43,7 @@
 
         .spring-info.show {
             top: 50%;
-            /* Slide to center vertically */
             transform: translate(-50%, -50%);
-            /* Center both horizontally and vertically */
         }
 
         .spring-info img {
@@ -118,47 +112,61 @@
                 }).addTo(this.map);
             }
 
-            addMarker(lat, lng, message) {
+            addMarker(lat, lng, message, image, description) {
                 const marker = L.marker([lat, lng]).addTo(this.map);
                 marker.bindPopup(message);
+
+                // Add click event to display info
+                marker.on('click', () => {
+                    this.showSpringInfo(image, description);
+                });
             }
+
             loadMarkersFromJson(url) {
                 fetch(url)
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         data.forEach(marker => {
-                            this.addMarker(marker.latitude, marker.longitude, marker.message, marker.image, marker.description);
+                            this.addMarker(
+                                marker.latitude,
+                                marker.longitude,
+                                marker.message,
+                                marker.image,
+                                marker.description
+                            );
                         });
                     })
                     .catch(error => console.error('Error loading markers:', error));
             }
 
             showSpringInfo(image, description) {
-                // Update the spring info section with the image and description
-                document.getElementById("springImage").src = image;
-                document.getElementById("springDescription").textContent = description;
+                const springInfoSection = document.getElementById("springInfo");
+                const springImage = document.getElementById("springImage");
+                const springDescription = document.getElementById("springDescription");
 
-                // Show the spring info section with sliding effect
-                document.getElementById("springInfo").classList.add("show");
+                springImage.src = image;
+                springDescription.textContent = description;
 
-                // Scroll the page to the spring info section with extra padding to make sure it's fully visible
+                springInfoSection.classList.add("show");
+
                 window.scrollTo({
-                    top: document.getElementById("springInfo").offsetTop - 20,
+                    top: springInfoSection.offsetTop - 20,
                     behavior: 'smooth'
                 });
             }
         }
 
-        // Example of how you can initialize the map and load markers
-        const myMap = new LeafletMap('map', [8.360004, 124.868419], 14);
-
-        // Load markers from a sample JSON file (make sure this is correctly defined)
-        myMap.loadMarkersFromJson('map.json');
-
-        // Close spring info section
         function closeSpringInfo() {
             document.getElementById("springInfo").classList.remove("show");
         }
+
+        const myMap = new LeafletMap('map', [8.360004, 124.868419], 14);
+        myMap.loadMarkersFromJson('map.json');
     </script>
 </body>
 

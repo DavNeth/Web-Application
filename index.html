@@ -14,16 +14,19 @@
             box-sizing: border-box;
         }
 
-        /* Body styling */
+        /* HTML and Body styling */
+        html {
+            height: 100%;
+        }
+
         body {
             font-family: 'Lora', serif;
             background-color: #f9f9f9;
             color: #333;
             line-height: 1.7;
-            height: 100vh;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
         /* Header styles */
@@ -60,6 +63,7 @@
             margin: 30px auto;
             width: 90%;
             max-width: 800px;
+            flex-grow: 1; /* Ensures the main content grows to fill space */
         }
 
         .search {
@@ -103,18 +107,9 @@
             background-color: #d62828;
         }
 
-        /* Map Section */
-        #map {
-            width: 100%;
-            height: 500px;
-            margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
         /* About Section */
         .about {
-            margin-top: 40px;
+            margin: 40px auto 0 auto;
             text-align: center;
             padding: 20px;
             background-color: #f1f1f1;
@@ -181,20 +176,17 @@
 
     <script>
        function locateSpring() {
-    const searchQuery = document.getElementById("searchInput").value.trim().toLowerCase();
-    const allowedLocations = ["tankulan", "tankulan manolo fortich bukidnon"];  // Allowed locations
+           const searchQuery = document.getElementById("searchInput").value.trim().toLowerCase();
+           const allowedLocations = ["tankulan", "tankulan manolo fortich bukidnon"];  // Allowed locations
 
-    if (searchQuery === "") {
-        // Alert when the search bar is empty
-        alert("The search bar is empty. Please enter a location.");
-    } else if (allowedLocations.includes(searchQuery)) {
-        // Redirect to map.html if the location is valid
-        window.location.href = "map.html";
-    } else {
-        // Notify the user if the location is invalid
-        alert("Location not found. Please try searching for 'Tankulan' or select from the list.");
-            }
-        }
+           if (searchQuery === "") {
+               alert("The search bar is empty. Please enter a location.");
+           } else if (allowedLocations.includes(searchQuery)) {
+               window.location.href = "map.html";
+           } else {
+               alert("Location not found. Please try searching for 'Tankulan' or select from the list.");
+           }
+       }
     </script>
 </head>
 <body>
@@ -216,11 +208,8 @@
         <section class="about">
             <h2>About Water Spring Locator</h2>
             <p>Water Spring Locator helps you find natural and clean water sources nearby. Whether you're looking for a scenic spring hike or planning your next adventure, our tool provides you with essential information about water springs across Tankulan Manolo Fortich Bukidnon. Find the freshest springs and enjoy the natural beauty they offer.</p>
-            <!-- Image of water spring -->
             <img src="https://media.istockphoto.com/id/1132674369/photo/drinking-clean-spring-water-in-nature-with-hands-cupped.jpg?s=612x612&w=0&k=20&c=D6baeBRjwih_mbmg7kwjoxheKN1rvhDF5ciUJTe1EfA=" alt="Water Spring">
         </section>
-        
-        <section id="map"></section>
     </main>
 
     <footer>
