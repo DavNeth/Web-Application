@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Our Services - Water Spring Locator</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            flex: 1;
+        }
+
+        /* Services Section */
+        .services {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .services h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #2b2d42;
+        }
+
+        .services p {
+            font-size: 20px;
+            margin-bottom: 50px;
+            color: #555;
+        }
+
+        .service-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 15px;
+            text-align: center;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            color: #2b2d42;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            color: #777;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #2b2d42;
+        }
+
+        .navbar-brand {
+            color: white;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #e63946;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2b2d42;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 16px;
+            margin-top: auto; /* Ensures footer stays at the bottom */
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .service-card {
+                max-width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="#">Water Spring Locator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" href="ourservices.html">Our Services</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Our Services Section -->
+    <section class="services">
+        <h2>Our Services</h2>
+        <p>At Water Spring Locator, we provide a range of services to help you discover and enjoy the beauty of natural water springs. Our tools are designed to give you detailed information about nearby water sources, so you can experience nature at its best.</p>
+
+        <div class="row">
+            <!-- Service 1 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <h3>Spring Location Mapping</h3>
+                    <p>Find nearby natural water springs with our interactive map that allows you to easily locate clean water sources.</p>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <h3>Guided Spring Tours</h3>
+                    <p>Experience scenic and guided hiking tours to some of the most beautiful natural water springs in the region.</p>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <h3>Water Quality Information</h3>
+                    <p>Access detailed water quality reports for each spring to ensure that you are drinking from clean and safe sources.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p class="mb-1">© 2024 Water Spring Locator. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
